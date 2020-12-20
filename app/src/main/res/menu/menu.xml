@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+ <item android:title="@string/Menú">
+     <menu>
+         <item
+             android:id="@+id/Inicio"
+             android:icon="@drawable/inicio"
+             android:title="@string/inicio"
+             >
+         </item>
+         <item
+             android:id="@+id/Generar"
+             android:icon="@drawable/chat"
+             android:title="@string/generar_debate"
+             >
+         </item>
+         <item
+             android:id="@+id/Buscar"
+             android:icon="@drawable/buscar"
+             android:title="@string/buscar_debate"
+             >
+         </item>
+
+
+     </menu>
+
+
+ </item>
+</menu>
