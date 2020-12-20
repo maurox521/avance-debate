@@ -24,6 +24,7 @@ public class Generar extends Fragment {
     EditText texto1,texto2,texto3,texto4,texto5;
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
        View view=inflater.inflate(R.layout.fragment_generar, container, false);
@@ -34,7 +35,7 @@ public class Generar extends Fragment {
         texto2=(EditText)view.findViewById(R.id.editTextTextPersonName2);
         texto3=(EditText)view.findViewById(R.id.editTextTextPersonName3);
         texto4=(EditText)view.findViewById(R.id.editTextTextMultiLine);
-
+        int cont=0;
 
         //arrayadapter se utiliza para agregar los elementos del archivo de recursos (string xml) a nuestra lista (comobobox,spinner,etc)
         ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource (getActivity(), R.array.opciones,android.R.layout.simple_spinner_item);
@@ -44,7 +45,7 @@ public class Generar extends Fragment {
         boton1.setOnClickListener(new View.OnClickListener(){
             public void onClick (View v){
                 String selec=spinner.getSelectedItem().toString();
-                if(selec.equals("Nombre de usuario")){
+                if(selec.equals("Anónimamente")){
                     texto2.setEnabled(true);
                     texto1.setEnabled(false);
 
@@ -65,16 +66,31 @@ public class Generar extends Fragment {
                 String alias=texto2.getText().toString();
                 String titulo=texto3.getText().toString();
                 String argu=texto4.getText().toString();
-                ArrayList <String>lista=new ArrayList<>();
                 if ((nombre.isEmpty()||alias.isEmpty())&&titulo.isEmpty()&&argu.isEmpty()){
                     Toast.makeText(getActivity(), "Falta uno o más datos por completar", Toast.LENGTH_LONG).show();
 
                 }
                 else{
                     Toast.makeText(getActivity(), "datos registrados", Toast.LENGTH_LONG).show();
+                    //podria hacer una instancia de la clase adapter datos y llamar a un metodo de esta clase que se ocupe de recibir la lista y rellenar en vez de hacer el imnput
+                    ArrayList <String>tit=new ArrayList<>();
+                    tit.add(titulo);
+
+                    texto1.setText("");
+                    texto2.setText("");
+                    texto3.setText("");
+                    texto4.setText("");
+
+
                 }
 
+
+
+
+
+
             }
+
         });
 
 

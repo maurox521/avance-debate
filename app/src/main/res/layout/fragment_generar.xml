@@ -83,7 +83,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Título de debate"
-        android:inputType="number|textPersonName"
+        android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.079"
