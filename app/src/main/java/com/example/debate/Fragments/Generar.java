@@ -34,6 +34,8 @@ public class Generar extends Fragment {
         texto2=(EditText)view.findViewById(R.id.editTextTextPersonName2);
         texto3=(EditText)view.findViewById(R.id.editTextTextPersonName3);
         texto4=(EditText)view.findViewById(R.id.editTextTextMultiLine);
+
+
         //arrayadapter se utiliza para agregar los elementos del archivo de recursos (string xml) a nuestra lista (comobobox,spinner,etc)
         ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource (getActivity(), R.array.opciones,android.R.layout.simple_spinner_item);
         spinner.setAdapter(adapter);
@@ -42,7 +44,7 @@ public class Generar extends Fragment {
         boton1.setOnClickListener(new View.OnClickListener(){
             public void onClick (View v){
                 String selec=spinner.getSelectedItem().toString();
-                if(selec.equals("anónimamente")){
+                if(selec.equals("Nombre de usuario")){
                     texto2.setEnabled(true);
                     texto1.setEnabled(false);
 
