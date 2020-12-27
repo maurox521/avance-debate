@@ -17,11 +17,14 @@ import com.example.debate.Fragments.Listar;
 import com.example.debate.Fragments.MainFragment;
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
     Toolbar toolbar;
     NavigationView navigationView;
+
 
 
     @Override
