@@ -23,12 +23,11 @@ import java.util.ArrayList;
 
 
 public class Generar extends Fragment {
-    AdapterPersona adapterPersona;
+
     RecyclerView recyclerViewPersonas;
     Button boton1,boton2;
     Spinner spinner;
     EditText texto1,texto2,texto3,texto4,texto5;
-    ArrayList<Persona> listaPersonas;
 
 
 
@@ -42,8 +41,8 @@ public class Generar extends Fragment {
         texto2=(EditText)view.findViewById(R.id.editTextTextPersonName2);
         texto3=(EditText)view.findViewById(R.id.editTextTextPersonName3);
         texto4=(EditText)view.findViewById(R.id.editTextTextMultiLine);
-        recyclerViewPersonas=(RecyclerView)view.findViewById(R.id.recyclerView);
-        listaPersonas=new ArrayList<>();
+
+
 
 
         //arrayadapter se utiliza para agregar los elementos del archivo de recursos (string xml) a nuestra lista (comobobox,spinner,etc)
@@ -71,6 +70,7 @@ public class Generar extends Fragment {
         boton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Listar listar=new Listar();
                 String nombre=texto1.getText().toString();
                 String alias=texto2.getText().toString();
                 String titulo=texto3.getText().toString();
@@ -81,28 +81,18 @@ public class Generar extends Fragment {
                 }
                 else{
                     Toast.makeText(getActivity(), "datos registrados", Toast.LENGTH_LONG).show();
-                    Persona Persona=new Persona(nombre,titulo);
-                    listaPersonas.add(Persona);
-                    recyclerViewPersonas.setLayoutManager(new LinearLayoutManager(getContext()));//si hubiera estado en un activity hubiera sido this,pero como estoy en un fragment es un getcontext
-                    adapterPersona=new AdapterPersona(getContext(),listaPersonas);
-                    recyclerViewPersonas.setAdapter(adapterPersona);//paso el adaptador
 
-                    /*if (nombre.isEmpty()){
-                        //paso los nombres y titulo
-                        listaPersonas.add(new Persona(alias,titulo));
 
-                        //muestro la data
-                        recyclerViewPersonas.setLayoutManager(new LinearLayoutManager(getContext()));//si hubiera estado en un activity hubiera sido this,pero como estoy en un fragment es un getcontext
-                        //adapterPersona=new AdapterPersona(getContext(),listaPersonas);
-                        //recyclerViewPersonas.setAdapter(adapterPersona);//paso el adaptador
+                    if (nombre.isEmpty()){
+
+                        //listar.llenarlista(alias,titulo);
+                    }
+                    else{
+                        //listar.llenarlista(nombre,titulo);
                     }
 
-                    else{
-                        listaPersonas.add(new Persona(nombre,titulo));
-                        //recyclerViewPersonas.setLayoutManager(new LinearLayoutManager(getContext()));
-                        //adapterPersona=new AdapterPersona(getContext(),listaPersonas);
-                        //recyclerViewPersonas.setAdapter(adapterPersona);
-                    }*/
+
+
 
                     /*pasando datos a clase adapter datos
                     Intent intent=new Intent(getActivity(), AdapterDatos.class);
