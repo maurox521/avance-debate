@@ -6,6 +6,9 @@
     app:cardCornerRadius="3dp"
     app:cardElevation="3dp"
     app:cardUseCompatPadding="true"
+    android:paddingTop="55dp"
+    android:id="@+id/lista"
+
     >
     <RelativeLayout
         android:layout_width="match_parent"

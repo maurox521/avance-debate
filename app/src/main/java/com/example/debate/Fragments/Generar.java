@@ -3,6 +3,8 @@ package com.example.debate.Fragments;
 import android.os.Bundle;
 import android.content.*;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,6 +22,8 @@ import com.example.debate.Entidades.Persona;
 import com.example.debate.R;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 
 public class Generar extends Fragment {
@@ -71,6 +75,8 @@ public class Generar extends Fragment {
             @Override
             public void onClick(View v) {
                 Listar listar=new Listar();
+                Bundle bundle=new Bundle();
+                Generar generar=new Generar();
                 String nombre=texto1.getText().toString();
                 String alias=texto2.getText().toString();
                 String titulo=texto3.getText().toString();
@@ -84,12 +90,20 @@ public class Generar extends Fragment {
 
 
                     if (nombre.isEmpty()){
+                        Bundle args = new Bundle();
+                        args.putString("Nombre",alias);
+                        listar.setArguments(args);
 
-                        //listar.llenarlista(alias,titulo);
                     }
                     else{
-                        //listar.llenarlista(nombre,titulo);
+                        bundle.putString("Nombre",nombre);
+                        //bundle.putString("Titulo",titulo);
+                        listar.setArguments(bundle);
+                        //getFragmentManager().beginTransaction().replace(R.id.content, listar).commit();
+
+
                     }
+
 
 
 
@@ -97,7 +111,9 @@ public class Generar extends Fragment {
                     /*pasando datos a clase adapter datos
                     Intent intent=new Intent(getActivity(), AdapterDatos.class);
                     intent.putExtra("Valor",titulo);
-                    startActivity(intent);*/
+                    startActivity(intent);
+                    talvez usar set y get,etc
+                    */
 
 
                     ///"Se limpian" los comonentes de fragment

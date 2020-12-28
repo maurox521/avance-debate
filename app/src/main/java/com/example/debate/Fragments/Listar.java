@@ -1,5 +1,6 @@
 package com.example.debate.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -27,22 +28,19 @@ public class Listar extends Fragment {
         View view=inflater.inflate(R.layout.fragment_listar, container, false);
         recyclerViewPersonas=(RecyclerView)view.findViewById(R.id.recyclerView);
         listapersonas=new ArrayList<>();
-        mostrarData();
-
-
-        /*Persona Persona=new Persona(nombre,titulo);
-        listaPersonas.add(Persona);
-        recyclerViewPersonas.setLayoutManager(new LinearLayoutManager(getContext()));//si hubiera estado en un activity hubiera sido this,pero como estoy en un fragment es un getcontext
-        adapterPersona=new AdapterPersona(getContext(),listaPersonas);
-        recyclerViewPersonas.setAdapter(adapterPersona);//paso el adaptador*/
+        Bundle args = getArguments();
+        if (args  != null) {
+            String nombre = args.getString("Nombre");
+            listapersonas.add(new Persona(nombre, "sdasdsadsad"));
+            mostrarData();
+        }
         return view;
     }
-    //public void llenarlista(String nombre,String titulo){
-        //listapersonas.add(new Persona(nombre,titulo));
-    //}
     public void mostrarData(){
         recyclerViewPersonas.setLayoutManager(new LinearLayoutManager(getContext()));
         adapterPersona=new AdapterPersona(getContext(),listapersonas);
         recyclerViewPersonas.setAdapter(adapterPersona);
     }
 }
+
+
