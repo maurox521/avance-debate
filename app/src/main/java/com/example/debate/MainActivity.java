@@ -12,12 +12,14 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.debate.BDSQLITE.ConexionSQLiteHelper;
+
 import com.example.debate.Fragments.Generar;
 import com.example.debate.Fragments.Listar;
 import com.example.debate.Fragments.MainFragment;
 import com.google.android.material.navigation.NavigationView;
 
-import java.util.ArrayList;
+import static java.security.AccessController.getContext;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawerLayout;
@@ -31,6 +33,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //instancia a conexionsqlite que recibe los prarametros: contexto aplicación ,nombre bd,parametro,version bd
+        ConexionSQLiteHelper conn=new ConexionSQLiteHelper(this,"bd_usuarios",null,1);
         toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);//paso el toolbar
         drawerLayout=findViewById(R.id.drawer);//llamo al drawer que esta dentro del activity main
