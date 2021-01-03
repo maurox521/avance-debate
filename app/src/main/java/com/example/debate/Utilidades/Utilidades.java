@@ -1,6 +1,7 @@
 package com.example.debate.Utilidades;
 
 public class Utilidades {
+    //constantes de la tabla usuario
     public static final String TABLA_USUARIO="usuario";
     public static final String CAMPO_ID="id";
     public static final String CAMPO_NOMBRE="nombre";
@@ -9,6 +10,6 @@ public class Utilidades {
     public static final String CAMPO_ARGUMENTO="argumento";
 
     public static final String CREAR_TABLA_USUARIO="CREATE TABLE " +
-            ""+TABLA_USUARIO+" ("+CAMPO_ID+" " +
+            ""+TABLA_USUARIO+" ("+CAMPO_ID +
             "INTEGER PRIMARY KEY AUTOINCREMENT, "+CAMPO_NOMBRE+" TEXT,"+CAMPO_ALIAS+" TEXT,"+CAMPO_TITULO+"TEXT,"+CAMPO_ARGUMENTO+ "TEXT)";
 }

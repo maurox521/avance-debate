@@ -50,6 +50,7 @@ public class AdapterPersona extends RecyclerView.Adapter<AdapterPersona.ViewHold
 
     @Override
     public int getItemCount() {//retorna el tamaño de la lista
+
         return personas.size();
     }
 
