@@ -1,5 +1,7 @@
 package com.example.debate.Fragments;
 
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,10 +14,18 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 
-
+import com.example.debate.BDSQLITE.ConexionSQLiteHelper;
 import com.example.debate.R;
+import com.example.debate.Utilidades.Utilidades;
+
+import static com.example.debate.Utilidades.Utilidades.CAMPO_ALIAS;
+import static com.example.debate.Utilidades.Utilidades.CAMPO_ARGUMENTO;
+import static com.example.debate.Utilidades.Utilidades.CAMPO_NOMBRE;
+import static com.example.debate.Utilidades.Utilidades.CAMPO_TITULO;
 
 
 public class Generar extends Fragment {
@@ -24,6 +34,7 @@ public class Generar extends Fragment {
     Button boton1,boton2;
     Spinner spinner;
     EditText texto1,texto2,texto3,texto4,texto5;
+    TextView textView;
 
 
 
@@ -37,6 +48,7 @@ public class Generar extends Fragment {
         texto2=(EditText)view.findViewById(R.id.editTextTextPersonName2);
         texto3=(EditText)view.findViewById(R.id.editTextTextPersonName3);
         texto4=(EditText)view.findViewById(R.id.editTextTextMultiLine);
+
 
 
 
@@ -67,24 +79,33 @@ public class Generar extends Fragment {
         boton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Listar listar=new Listar();
-                Bundle bundle=new Bundle();
-                //ConexionSqliteHelper dbhelper = new ConexionSqliteHelper(getContext());
-                //se abre la bd para poder editarla
-                //SQLiteDatabase db=dbhelper.get
-                //ContentValues valor=new ContentValues();
-                //Generar generar=new Generar();
                 String nombre=texto1.getText().toString();
                 String alias=texto2.getText().toString();
                 String titulo=texto3.getText().toString();
                 String argu=texto4.getText().toString();
-                //valor.put(CAMPO_NOMBRE,"");
-                //valor.put(CAMPO_ALIAS,alias);
-                //valor.put(CAMPO_TITULO,titulo);
-                //valor.put(CAMPO_ARGUMENTO,argu);
-                //Long idresultante=db.insert(Utilidades.TABLA_USUARIO,null, valor);
+                ConexionSQLiteHelper conn=new ConexionSQLiteHelper(getActivity(),"bd_usuarios",null,1);
+                SQLiteDatabase db=conn.getWritableDatabase();
+                ContentValues valor=new ContentValues();
+                if(nombre.isEmpty()){
+                    valor.put(CAMPO_NOMBRE,"");
+                    valor.put(CAMPO_ALIAS,alias);
+                    valor.put(CAMPO_TITULO,titulo);
+                    valor.put(CAMPO_ARGUMENTO,argu);
 
-
+                }
+                else{
+                    valor.put(CAMPO_NOMBRE,nombre);
+                    valor.put(CAMPO_ALIAS,"");
+                    valor.put(CAMPO_TITULO,titulo);
+                    valor.put(CAMPO_ARGUMENTO,argu);
+                }
+                Long idresultante=db.insert(Utilidades.TABLA_USUARIO,null, valor);
+                Toast.makeText(getActivity(),"insertado en posición"+idresultante,Toast.LENGTH_SHORT).show();
+                texto1.setText("");
+                texto2.setText("");
+                texto3.setText("");
+                texto4.setText("");
+                db.close();
 
 
                 }
