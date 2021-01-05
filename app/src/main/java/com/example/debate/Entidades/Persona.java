@@ -1,14 +1,16 @@
 package com.example.debate.Entidades;
 
-public class Persona {
-    private Integer Id;
+import java.io.Serializable;
+
+public class Persona implements Serializable {
+//Serializable permite enviar un objeto
     private String Nombre;
     private String Alias;
     private String Titulo;
     private String Argumento;
 
-    public Persona(Integer id,String nombre,String alias,String titulo,String argumento) {
-        this.Id=id;
+    public Persona(String nombre,String alias,String titulo,String argumento) {
+
         this.Nombre = nombre;
         this.Alias=alias;
         this.Titulo=titulo;
@@ -37,13 +39,6 @@ public class Persona {
         Titulo = titulo;
     }
 
-    public Integer getId() {
-        return Id;
-    }
-
-    public void setId(Integer id) {
-        Id = id;
-    }
 
     public String getAlias() {
         return Alias;

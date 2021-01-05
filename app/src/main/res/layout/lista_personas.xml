@@ -8,6 +8,8 @@
     app:cardUseCompatPadding="true"
     android:paddingTop="55dp"
     android:id="@+id/lista"
+    android:orientation="vertical"
+
 
     >
     <RelativeLayout
@@ -23,6 +25,8 @@
         >
     </ImageView>
 
+
+
     <TextView
         android:id="@+id/persona"
         android:layout_width="wrap_content"
@@ -36,9 +40,25 @@
         android:layout_marginStart="10dp"
 
 
+
+
         >
 
     </TextView>
+        <TextView
+            android:id="@+id/alias"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="alias"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_below="@id/persona"
+            android:layout_toEndOf="@id/imagen_persona"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_toRightOf="@id/imagen_persona">
+        </TextView>
+
         <TextView
             android:id="@+id/titulo"
             android:layout_width="wrap_content"
@@ -46,7 +66,20 @@
             android:text="@string/t_tulo"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:layout_below="@id/persona"
+            android:layout_below="@id/alias"
+            android:layout_toEndOf="@id/imagen_persona"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_toRightOf="@id/imagen_persona">
+        </TextView>
+        <TextView
+            android:id="@+id/argumento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Argumento:"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_below="@id/titulo"
             android:layout_toEndOf="@id/imagen_persona"
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"

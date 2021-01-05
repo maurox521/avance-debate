@@ -14,6 +14,8 @@ import android.view.MenuItem;
 
 import com.example.debate.BDSQLITE.ConexionSQLiteHelper;
 
+import com.example.debate.Entidades.Persona;
+import com.example.debate.Fragments.Debatir;
 import com.example.debate.Fragments.Generar;
 import com.example.debate.Fragments.Listar;
 import com.example.debate.Fragments.MainFragment;
@@ -21,12 +23,13 @@ import com.google.android.material.navigation.NavigationView;
 
 import static java.security.AccessController.getContext;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,ComunicaFragment{
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
     Toolbar toolbar;
     NavigationView navigationView;
-
+    //variable  de fragment Debatir
+    Debatir debatir;
 
 
     @Override
@@ -46,6 +49,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.setDrawerIndicatorEnabled(true);
         actionBarDrawerToggle.syncState();
+
+
         //carga el fragment principal
         FragmentManager fragmentManager;
         FragmentTransaction fragmentTransaction;
@@ -87,5 +92,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return false;
+    }
+
+    @Override
+    public void enviarPersona(Persona persona) {
+        debatir=new Debatir();
+        //objeto bundle sirve para transferir informacion
+        Bundle bundle=new Bundle();
+        //envio el objeto que esta llenado con Serializable
+        bundle.putSerializable("objeto",persona);//ahora la 'clave' objeto tiene los valores del objeto persona
+        debatir.setArguments(bundle);
+        FragmentManager fragmentManager;
+        FragmentTransaction fragmentTransaction;
+        fragmentManager=getSupportFragmentManager();
+        fragmentTransaction=fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.container, new Debatir());
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 }

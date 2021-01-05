@@ -15,7 +15,7 @@ import com.example.debate.R;
 import java.util.ArrayList;
 
 public class AdapterPersona extends RecyclerView.Adapter<AdapterPersona.ViewHolder> implements View.OnClickListener {
-    ArrayList<Persona>personas=new ArrayList<>();
+    ArrayList<Persona>personas;
     LayoutInflater layoutInflater;
     //listener:
     private View.OnClickListener listener;
@@ -26,20 +26,29 @@ public class AdapterPersona extends RecyclerView.Adapter<AdapterPersona.ViewHold
     }
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {//esto funciona igual que una vista como el de los otros metodos
-        View view=layoutInflater.inflate(R.layout.lista_personas,parent,false);    //inflo el layout de la lista
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view=layoutInflater.inflate(R.layout.lista_personas,parent,false);
         view.setOnClickListener(this);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        //obtengo nombre y titulo de la posicion
-        String Nombre=personas.get(position).getNombre();
-        String Titulo=personas.get(position).getTitulo();
+       //obtengo nombre y titulo de la posicion
+       // Integer ID=personas.get(position).getId();
+        String nombre=personas.get(position).getNombre();
+        String alias=personas.get(position).getAlias();
+        String titulo=personas.get(position).getTitulo();
+        String argumento=personas.get(position).getArgumento();
         //establesco los valores del nombre y título
-        holder.Nombre.setText(Nombre);
-        holder.Titulo.setText(Titulo);
+        //holder.id.setText(ID);
+        holder.Nombre.setText(nombre);
+        holder.Alias.setText(alias);
+        holder.Titulo.setText(titulo);
+        holder.Argumento.setText(argumento);
+
+
+
 
 
     }
@@ -64,12 +73,15 @@ public class AdapterPersona extends RecyclerView.Adapter<AdapterPersona.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         //se referencian las vistas
-        TextView Nombre,Titulo;
+        TextView id,Nombre,Alias,Titulo,Argumento;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            //id=itemView.findViewById(R.id.idpersona);
             Nombre=itemView.findViewById(R.id.persona);
+            Alias=itemView.findViewById(R.id.alias);
             Titulo=itemView.findViewById(R.id.titulo);
+            Argumento=itemView.findViewById(R.id.argumento);
         }
     }
 
